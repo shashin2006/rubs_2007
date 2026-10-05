@@ -49,6 +49,30 @@ public final class DatabaseManager {
 
     public static void unlockUser(String customerId) { update("UPDATE users SET locked=0 WHERE customer_id=?", customerId); }
 
+    /**
+     * Resets the fixed educational demo account. This clears its lock state,
+     * previous failed-attempt history, and any outstanding OTP.
+     */
+
+    public static void resetDemoAccount() {
+        try (Connection c = connect()) {
+            try (PreparedStatement p = c.prepareStatement("UPDATE users SET locked=0 WHERE customer_id=?")) {
+                p.setString(1, "CSE1234");
+                p.executeUpdate();
+            }
+            try (PreparedStatement p = c.prepareStatement("DELETE FROM login_attempts WHERE customer_id=?")) {
+                p.setString(1, "CSE1234");
+                p.executeUpdate();
+            }
+            try (PreparedStatement p = c.prepareStatement("DELETE FROM otp_store WHERE customer_id=?")) {
+                p.setString(1, "CSE1234");
+                p.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Unable to reset demo account", e);
+        }
+    }
+
     private static void update(String sql, String value) {
         try (Connection c = connect(); PreparedStatement p = c.prepareStatement(sql)) { p.setString(1, value); p.executeUpdate(); }
         catch (SQLException e) { throw new RuntimeException("Database update failed", e); }
@@ -76,6 +100,15 @@ public final class DatabaseManager {
                 return r.getString(1).equals(otp) && LocalDateTime.now().isBefore(LocalDateTime.parse(r.getString(2)));
             }
         } catch (SQLException e) { throw new RuntimeException("Unable to verify OTP", e); }
+    }
+
+    public static void consumeOtp(String customerId) {
+        try (Connection c = connect(); PreparedStatement p = c.prepareStatement("DELETE FROM otp_store WHERE customer_id=?")) {
+            p.setString(1, customerId);
+            p.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Unable to consume OTP", e);
+        }
     }
 
     private static String sha256(String value) {
