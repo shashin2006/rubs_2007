@@ -1,0 +1,14 @@
+C:\Toc_mini\AutomataBank\src\main\java\com\automata\bank\auth\AuthenticationFSM.java
+C:\Toc_mini\AutomataBank\src\main\java\com\automata\bank\auth\AuthenticationResult.java
+C:\Toc_mini\AutomataBank\src\main\java\com\automata\bank\auth\AuthenticationState.java
+C:\Toc_mini\AutomataBank\src\main\java\com\automata\bank\automata\CustomerIdDFA.java
+C:\Toc_mini\AutomataBank\src\main\java\com\automata\bank\automata\DFA.java
+C:\Toc_mini\AutomataBank\src\main\java\com\automata\bank\automata\DFAResult.java
+C:\Toc_mini\AutomataBank\src\main\java\com\automata\bank\automata\OtpDFA.java
+C:\Toc_mini\AutomataBank\src\main\java\com\automata\bank\automata\PinDFA.java
+C:\Toc_mini\AutomataBank\src\main\java\com\automata\bank\db\DatabaseManager.java
+C:\Toc_mini\AutomataBank\src\main\java\com\automata\bank\Main.java
+C:\Toc_mini\AutomataBank\src\main\java\com\automata\bank\model\User.java
+C:\Toc_mini\AutomataBank\src\main\java\com\automata\bank\ui\LoginFrame.java
+C:\Toc_mini\AutomataBank\src\main\java\com\automata\bank\ui\Theme.java
+C:\Toc_mini\AutomataBank\src\main\java\com\automata\bank\ui\TracePanel.java
