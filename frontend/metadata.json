@@ -1,0 +1,6 @@
+{
+  "name": "Cloud-Based Smart Queue Manager",
+  "description": "Distributed and Cloud Computing mini-project prototype for token generation, queue tracking, counter operations, and admin statistics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
